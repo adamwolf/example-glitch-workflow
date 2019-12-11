@@ -1,37 +1,64 @@
-Welcome to Glitch
-=================
+# example-glitch-workflow
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+I really like Glitch. I love how easy it is to put some code on the internet and have it run!
 
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
+However, I am looking for something a little more deliberate than the typical Glitch workflow.
 
-Find out more [about Glitch](https://glitch.com/about).
+The idea here is that I have one repository where all my code lives.  I also have two Glitch projects.
+One reflects development, and can have changes all willy-nilly.  When I'm ready to "save", I export to
+Github from Glitch, which makes a commit to the 'glitch' branch over at Github.  I can then make a Pull
+Request (PR) from the glitch branch over to the master branch, where folks can review it and give feedback,
+and then when that's merged into master, a little automation pushes the changes to master to a second 
+Glitch project.
 
+This means that I can do work on Glitch, get interrupted, and not have to worry that I broke my Glitch project.
+My changes will be on the development project, not the master project.
 
-Your Project
-------------
+(This also is a workflow that may help some junior devs transition to a more enterprisey type environment.)
 
-### ← README.md
+## How to set this up
+I'm assuming you're starting with an example project on Glitch.
 
-That's this file, where you can tell people what your cool website does and how you built it.
+Make a project, called foo-dev.  The first project is the development project.  This is one where folks can edit 
+live on Glitch and see
+their changes super fast.  You'll have to set up the link to Github.  If you haven't created a repository
+at Github, go do that.  If you don't have any files to put in it yet, make sure to click the "initialize project
+with README" during Github repository creation.  Once you have a Github repository, with a file in it, go to 
+Tools > Git, Import, and Export > Export to Github
+and set up the link to Github.
 
-### ← index.html
+Export foo-dev to Github.  Go to Github, make a PR from glitch into master, and accept it.  Tada! Thats how you'll
+be making all of your changes... but after we set it up, the next part will be automatic.
 
-Where you'll write the content of your website. 
+Make another project, called foo.  This is your master project.  Go to Tools > Git, Import, and Export > Import from Github
+and import from your project.
 
-### ← style.css
+SETUP GITHUB ACTION
 
-CSS files add styling rules to your content.
+## How to use this once it's set up
 
-### ← script.js
+Make your changes in Glitch, on foo-dev.  When you're ready with them, go to Tools > Git, Import, and Export > Export to Github.
+Every time you export to Github from glitch, it writes to the 'glitch' branch over at Github.  It asks you for a
+commit message even, so you can explain what you've done!
 
-If you're feeling fancy you can add interactivity to your site with JavaScript.
+Wait a moment, and the Github Action will run, and take what's on master on Github and put it on Glitch, on foo!
 
-### ← assets
+Don't edit source on foo, after you've got it set up. Any changes you make will just be overwritten after the next commit.  
+Consider limiting who can edit the master project.
 
-Drag in `assets`, like images or music, to add them to your project
+# How do I get changes from other people?
 
-Made by [Glitch](https://glitch.com/)
--------------------
+Once this gets fleshed out, this is going to be awesome.
 
-\ ゜o゜)ノ
+If someone forks your repository and sets it up on Glitch, they can issue a PR to your repository.  
+You accept it, and the changes will show up on master!
+
+There's a snag here, where we have to pull those changes into the development project, and also
+someone better versed in Glitch than myself probably knows how to make this easy to set up for
+folks who don't use git everyday.
+
+If you are that person, I'd love to hear your thoughts, or better yet, see a PR from you! :)
+
+# Resources
+
+This project uses the wonderful https://github.com/glitch-tools/sync-glitch-github-action.
