@@ -1,16 +1,17 @@
-name: Sync to Glitch (https://example-glitch-workflow.glitch.me/)
+name: Sync to Glitch (https://example-glitch-workflow.glitch.me/) # You can fill your master Glitch project's URL in here!
 
-on: [push]
+# See https://example-glitch-workflow.glitch.me/ for details on how this was set up.
 
+on:
+  push:
+    branches:    
+      - master
+  
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: "glitch-tools/sync-glitch-github-action@master"
       env:
         GLITCH_PROJECT_ID: ${{ secrets.GLITCH_PROJECT_ID }}
         GLITCH_TOKEN: ${{ secrets.GLITCH_TOKEN }}
-    - name: Run a one-line script
-      run: echo Hello, world!
