@@ -1,5 +1,6 @@
 # example-glitch-workflow
-## Adam Wolf, 2019
+
+#### Adam Wolf, 2019
 
 I am not a Glitch expert, and I'd love tips or help improving the following.
 
@@ -27,33 +28,33 @@ Make another project, called foo. This is your master project. Go to Tools > Git
 
 This is where the magic happens! (However, it requires some nitty-gritty to set up.)
 
-You are going to set up a Github Action workflow.  You will need a file that I've made, plus you'll need two pieces of information from your master Glitch project.  These are sensitive, kinda like passwords, so don't give them to people.
+You are going to set up a Github Action workflow. You will need a file that I've made, plus you'll need two pieces of information from your master Glitch project. These are sensitive, kinda like passwords, so don't give them to people.
 
-You will need your "Glitch Token" and your "Glitch Project ID".  The way I know how to get them is as follows:
+You will need your "Glitch Token" and your "Glitch Project ID". The way I know how to get them is as follows:
 
 1. Go to your master project on Glitch.
-2. Open up your web browser's console.  If on Chrome, try right clicking on the page and selecting Inspect.
+2. Open up your web browser's console. If on Chrome, try right clicking on the page and selecting Inspect.
 3. Import from Github in Glitch.
-4. (This is the complicated one.  Sorry, folks!)  In the Network tab of the console in your web browser, look for the request starting githubImport?projectId...  There should be two of them.  One of them is a POST, and the other is OPTIONS.   You can tell the difference by clicking on them, and then in the side pane, under General, it tells the Request Method.  Click on the POST.  Scroll down to the very bottom, under Query String Parameters, there is a projectID.  That's your Glitch Project ID.  Scroll up a bit, and under Request Headers, there's an authorization.  That's your Glitch Token.  Remember, these are like passwords, so don't give them out.
-5. Go into your Github project, and go into Settings.  Under Secrets, Add A New Secret, and make one called GLITCH_PROJECT_ID.  Paste in your project ID as the value.  Make another new secret called GLITCH_TOKEN, and paste in your Glitch token.
+4. (This is the complicated one. Sorry, folks!) In the Network tab of the console in your web browser, look for the request starting githubImport?projectId... There should be two of them. One of them is a POST, and the other is OPTIONS. You can tell the difference by clicking on them, and then in the side pane, under General, it tells the Request Method. Click on the POST. Scroll down to the very bottom, under Query String Parameters, there is a projectID. That's your Glitch Project ID. Scroll up a bit, and under Request Headers, there's an authorization. That's your Glitch Token. Remember, these are like passwords, so don't give them out.
+5. Go into your Github project, and go into Settings. Under Secrets, Add A New Secret, and make one called GLITCH_PROJECT_ID. Paste in your project ID as the value. Make another new secret called GLITCH_TOKEN, and paste in your Glitch token.
 
 Phew!
 
-Now, go to your Github repo, and we're going to copy in the workflow file.  You can use the web interface to create a new file.  Have it go into .github/workflows/workflow.yml, and copy the contents of <https://raw.githubusercontent.com/adamwolf/example-glitch-workflow/master/.github/workflows/workflow.yml> into it.  If you want, change the URL in the name to point at your master Glitch so you can remember how this all goes together when you look at it in six months. :)
+Now, go to your Github repo, and we're going to copy in the workflow file. You can use the web interface to create a new file. Have it go into .github/workflows/workflow.yml, and copy the contents of <https://raw.githubusercontent.com/adamwolf/example-glitch-workflow/master/.github/workflows/workflow.yml> into it. If you want, change the URL in the name to point at your master Glitch so you can remember how this all goes together when you look at it in six months. :)
 
 ## How to use this once it's set up
 
 Make your changes in Glitch, on foo-dev. When you're ready with them, go to Tools > Git, Import, and Export > Export to Github. Every time you export to Github from glitch, it writes to the 'glitch' branch over at Github. It asks you for a commit message even, so you can explain what you've done!
 
-Wait a moment, and the Github Action will run, and take what's on master on Github and put it on Glitch, on foo!  You can look at it working on the Actions tab of your Github Repo.
+Wait a moment, and the Github Action will run, and take what's on master on Github and put it on Glitch, on foo! You can look at it working on the Actions tab of your Github Repo.
 
 # Is there anything I should watch out for?
 
 Don't edit source on foo, your master Glitch, after you've got it set up. Any changes you make will just be overwritten after the next commit. Consider limiting who can edit the master project.
 
-If you edit source on Github or through other PRs that don't originate from the develop Glitch, you'll probably want to pull those in.  You can do that using Import from Github on the develop Glitch site.
+If you edit source on Github or through other PRs that don't originate from the develop Glitch, you'll probably want to pull those in. You can do that using Import from Github on the develop Glitch site.
 
-I don't know how this works with .env stuff, but I'll be looking at that.
+It seems to be working fine with .env files. You'll need to edit those using Glitch, and they aren't imported or exported (like you'd expect.) Before putting anything sensitive in there, do a test for yourself.
 
 # How do I get changes from other people?
 
@@ -65,7 +66,7 @@ There's some snags here. We have to pull those changes into the development proj
 
 # How do I ask questions about this?
 
-Hmm.  I'm not sure.  Maybe go file an issue over at <https://github.com/adamwolf/example-glitch-workflow/issues>?
+Hmm. I'm not sure. Maybe go file an issue over at <https://github.com/adamwolf/example-glitch-workflow/issues>?
 
 # Resources
 
