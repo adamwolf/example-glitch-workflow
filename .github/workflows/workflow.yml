@@ -1,4 +1,4 @@
-name: CI
+name: Sync to Glitch (https://example-glitch-workflow.glitch.me/)
 
 on: [push]
 
