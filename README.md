@@ -47,7 +47,13 @@ Make your changes in Glitch, on foo-dev. When you're ready with them, go to Tool
 
 Wait a moment, and the Github Action will run, and take what's on master on Github and put it on Glitch, on foo!  You can look at it working on the Actions tab of your Github Repo.
 
+# Is there anything I should watch out for?
+
 Don't edit source on foo, your master Glitch, after you've got it set up. Any changes you make will just be overwritten after the next commit. Consider limiting who can edit the master project.
+
+If you edit source on Github or through other PRs that don't originate from the develop Glitch, you'll probably want to pull those in.  You can do that using Import from Github on the develop Glitch site.
+
+I don't know how this works with .env stuff, but I'll be looking at that.
 
 # How do I get changes from other people?
 
