@@ -35,8 +35,8 @@ You will need your "Glitch Token" and your "Glitch Project ID". The way I know h
 1. Go to your master project on Glitch.
 2. Open up your web browser's console. If on Chrome, try right clicking on the page and selecting Inspect.
 3. Import from Github in Glitch.
-4. (This is the complicated one. Sorry, folks!) In the Network tab of the console in your web browser, look for the request starting githubImport?projectId... There should be two of them. One of them is a POST, and the other is OPTIONS. You can tell the difference by clicking on them, and then in the side pane, under General, it tells the Request Method. Click on the POST. Scroll down to the very bottom, under Query String Parameters, there is a projectID. That's your Glitch Project ID. Scroll up a bit, and under Request Headers, there's an authorization. That's your Glitch Token. Remember, these are like passwords, so don't give them out.
-5. Go into your Github project, and go into Settings. Under Secrets, Add A New Secret, and make one called GLITCH_PROJECT_ID. Paste in your project ID as the value. Make another new secret called GLITCH_TOKEN, and paste in your Glitch token.
+4. (This is the complicated one. Sorry, folks!) In the Network tab of the console in your web browser, look for the request starting `githubImport?projectId...` There should be two of them. One of them is a POST, and the other is OPTIONS. You can tell the difference by clicking on them, and then in the side pane, under General, it tells the Request Method. Click on the POST. Scroll down to the very bottom, under Query String Parameters, there is a projectID. That's your Glitch Project ID. Scroll up a bit, and under Request Headers, there's an authorization. That's your Glitch Token. Remember, these are like passwords, so don't give them out.
+5. Go into your Github project, and go into Settings. Under Secrets, Add A New Secret, and make one called `GLITCH_PROJECT_ID`. Paste in your project ID as the value. Make another new secret called `GLITCH_TOKEN`, and paste in your Glitch token.
 
 Phew!
 
